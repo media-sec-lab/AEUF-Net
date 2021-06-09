@@ -22,3 +22,6 @@ config.py里的主要参数有：
 'max_iters'：最大迭代次数；
 'display'：每隔多少个迭代就会展示当前的loss；
 'snapshot_iterations'：每隔多少个迭代就会保存当前模型；
+
+# Acknowledgments
+The codes are modified from https://github.com/LarryJiang134/Image_manipulation_detection and https://github.com/HuizhouLi/Constrained-R-CNN
