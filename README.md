@@ -1,27 +1,43 @@
-# EMUNet
-  
-train_mask.py：训练代码
-self.tfmodel：预训练模型存放的路径；
-combined_roidb函数里的变量是不同数据集的名称；
-修改变量后直接python train_mask.py即可
+# AEUF-Net
 
-test_mask.py：测试代码
-在'--model'的default中修改模型存放路径；
-在'--imdb'的default中修改数据集的名称；
-修改变量后直接python test_mask.py即可
+This is the implementation of the paper [Image Tampering Localization Using Unified Two-Stream Features Enhanced with Channel and Spatial Attention] (PRCV 2021).
+
+## Usage:
+### Train
+
+Perform the training process by using [**train_mask.py**](train_mask.py), where [self.tfmodel](train_mask.py#L74) is the path to a pre-trained model and the function [combined_roidb](train_mask.py#L80) accepts a dataset name as its parameter. Modify the corresponding parts and then run:
+```
+python train_mask.py
+```
+
+### Test
+
+Perform the training process by using [**test_mask.py**](test_mask.py). Change [the path to the model](test_mask.py#L54) and [the name of dataset](test_mask.py#L65) by modifying the defaults and then run:
+```
+python test_mask.py
+```
 
 
-lib.datasets：存放不同数据集代码的文件夹
-lib.datasets.factory.py：设置不同数据集的路径
-lib.nets：存放不同网络代码的文件夹
-lib.config.config.py：设置学习率，迭代次数等超参数
+### Other configurations
 
-config.py里的主要参数有：
-'learning_rate'：学习率；
-'MASK_BATCH'：Mask分支的RoI数量；
-'max_iters'：最大迭代次数；
-'display'：每隔多少个迭代就会展示当前的loss；
-'snapshot_iterations'：每隔多少个迭代就会保存当前模型；
+[lib/datasets](lib/datasets)：contain the code for different datasets
 
-# Acknowledgments
-The codes are modified from https://github.com/LarryJiang134/Image_manipulation_detection and https://github.com/HuizhouLi/Constrained-R-CNN
+[lib/datasets/factory.py](lib/datasets/factory.py)：set the path for different datasets
+
+[lib/nets](lib/nets)：contain the code for different networks
+
+[lib/config/config.py](lib/config/config.py)：set the hyper parameters
+
+>'learning_rate'：the learning rate
+
+>'MASK_BATCH'：the number of RoIs in the Mask branch
+
+>'max_iters'：max iterations
+
+>'display'：the number of iterations that the value of loss will be shown
+
+>'snapshot_iterations'：the number of iterations that the model will be saved
+
+
+## Acknowledgments
+The codes are modified from https://github.com/LarryJiang134/Image_manipulation_detection and https://github.com/HuizhouLi/Constrained-R-CNN.
